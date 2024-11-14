@@ -1,0 +1,24 @@
+name: Deploy to various Environments
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy_dev:
+    uses: reusable.yml
+    with:
+      environment: dev
+
+  deploy_staging:
+    needs: deploy_dev
+    uses: reusable.yml
+    with:
+      environment: staging
+
+  deploy_prod:
+    needs: deploy_staging:
+    uses: reusable.yml
+    with:
+      environment: production

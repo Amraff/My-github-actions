@@ -13,12 +13,12 @@ jobs:
 
   deploy_staging:
     needs: deploy_dev
-    uses: ./.github/workflows/./.github/workflows/reusable.yml
+    uses: ./.github/workflows/reusable.yml
     with:
       environment: staging
 
   deploy_prod:
-    needs: deploy_staging:
+    needs: deploy_staging
     uses: ./.github/workflows/reusable.yml
     with:
       environment: production
